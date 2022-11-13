@@ -19,7 +19,7 @@ jobs:
           repository: 'anandrikka/gh-actions'
           ref: 'refs/tags/main'
           path: './.github/actions'
-#          ssh-key: ${{ secrets.SS_GHA_SSH }}
+#          ssh-key: ${{ secrets.SS_GHA_SSH }} sample
       - uses: ./.github/actions/issue-ops
         id: issue-ops-deploy
         with:
