@@ -2,6 +2,35 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+parameters:
+  workflow_name:
+    type: string
+    default: build
+  deploy_env:
+    type: string
+    default: integration
+  deploy_version:
+    type: string
+    default: ""
+  deploy_date:
+    type: string
+    default: ""
+  deploy_patch:
+    type: boolean
+    default: false
+  deploy_aws_region:
+    type: string
+    default: ""
+  deploy_aws_env:
+    type: string
+    default: ""
+  deploy_ref:
+    type: string
+    default: ""
+  gha_deployment_id:
+    type: string
+    default: ""
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -17,6 +46,10 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run:
+          name: "Update GHA deployment"
+          command: |
+            echo << pipeline.parameters.gha_deployment_id >>
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
