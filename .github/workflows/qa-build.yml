@@ -31,6 +31,7 @@ jobs:
         uses: ./.github/actions/cci-workflow
         with:
           cci_token: ${{ secrets.CIRCLECI_DISPATCH_TOKEN }}
+          branch: ${{ steps.issue-ops-deploy.outputs.deploy_ref }}
           request_params: |
             workflow_name:gha_qa_deploy
             deploy_env:${{steps.issue-ops-deploy.outputs.deploy_env}}
