@@ -12,7 +12,7 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
       - uses: peter-evans/create-or-update-comment@v2.1.0
         with:
-          issue-number: ${{ github.event.issue.id }}
+          issue-number: ${{ github.event.issue.number }}
           body: |
             This is a test comment
           reactions: '+1'
